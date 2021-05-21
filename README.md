@@ -2,7 +2,7 @@
 
 Autores:
 
-Sanchez Suarez, Jose Antonio
+Sánchez Suárez, Jose Antonio
 
 Wu, Weibin
 
