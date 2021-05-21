@@ -1,0 +1,14 @@
+class CreateAdministradors < ActiveRecord::Migration[6.1]
+  def change
+    create_table :administradors do |t|
+      t.string :nombre
+      t.string :apellido
+      t.string :num_tlf
+      t.string :email
+      t.string :pass
+
+      t.timestamps
+    end
+    add_index :administradors, :email, unique: true
+  end
+end
