@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :alumnos_id %>
+    <%= form.label singularize(:alumnos_id) %>
     <%= form.text_field :alumnos_id %>
   </div>
 
   <div class="field">
-    <%= form.label :examenes_id %>
+    <%= form.label singularize(:examenes_id) %>
     <%= form.text_field :examenes_id %>
   </div>
 
   <div class="field">
-    <%= form.label :nota %>
+    <%= form.label singularize(:nota) %>
     <%= form.number_field :nota %>
   </div>
 
