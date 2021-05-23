@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :profesores
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'profesores#index'
+
+  get "/app/assets/apks/flutter.apk" => "profesoresr#descargar"
 end
