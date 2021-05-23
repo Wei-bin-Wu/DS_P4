@@ -1,5 +1,3 @@
-require 'bcrypt'
-
 class ProfesoresController < ApplicationController
   before_action :set_profesore, only: %i[ show edit update destroy ]
 
@@ -24,7 +22,6 @@ class ProfesoresController < ApplicationController
   # POST /profesores or /profesores.json
   def create
     @profesore = Profesore.new(profesore_params)
-    @profesore.pass = BCrypt::Password.create(@profesore.pass)
 
     respond_to do |format|
       if @profesore.save
