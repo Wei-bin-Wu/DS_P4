@@ -22,6 +22,7 @@ body {
     background-attachment: fixed;
     background-position: 0% 0%;
     background-repeat: no-repeat; /*no-tiling background*/
+    padding-left: 2%;
     width: 100%;
     height: 200%;
     background-size: 100%;
