@@ -1,1 +1,1 @@
-json.partial! "nota/notum", notum: @notum
+json.partial! "nota/nota", nota: @nota
