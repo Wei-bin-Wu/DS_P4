@@ -89,7 +89,7 @@ thead td {
 #tabla {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 70%;
   }
   
 #tabla td, #tabla th {
