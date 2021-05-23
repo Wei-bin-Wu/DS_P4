@@ -2,7 +2,7 @@ require "test_helper"
 
 class NotaControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @notum = nota(:one)
+    @nota = nota(:one)
   end
 
   test "should get index" do
@@ -11,36 +11,36 @@ class NotaControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_notum_url
+    get new_nota_url
     assert_response :success
   end
 
-  test "should create notum" do
-    assert_difference('Notum.count') do
-      post nota_url, params: { notum: { alumnos_id: @notum.alumnos_id, examenes_id: @notum.examenes_id, foto: @notum.foto, nota: @notum.nota } }
+  test "should create nota" do
+    assert_difference('Nota.count') do
+      post nota_url, params: { nota: { alumnos_id: @nota.alumnos_id, examenes_id: @nota.examenes_id, foto: @nota.foto, nota: @nota.nota } }
     end
 
-    assert_redirected_to notum_url(Notum.last)
+    assert_redirected_to nota_url(Nota.last)
   end
 
-  test "should show notum" do
-    get notum_url(@notum)
+  test "should show nota" do
+    get nota_url(@nota)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_notum_url(@notum)
+    get edit_nota_url(@nota)
     assert_response :success
   end
 
-  test "should update notum" do
-    patch notum_url(@notum), params: { notum: { alumnos_id: @notum.alumnos_id, examenes_id: @notum.examenes_id, foto: @notum.foto, nota: @notum.nota } }
-    assert_redirected_to notum_url(@notum)
+  test "should update nota" do
+    patch nota_url(@nota), params: { nota: { alumnos_id: @nota.alumnos_id, examenes_id: @nota.examenes_id, foto: @nota.foto, nota: @nota.nota } }
+    assert_redirected_to nota_url(@nota)
   end
 
-  test "should destroy notum" do
-    assert_difference('Notum.count', -1) do
-      delete notum_url(@notum)
+  test "should destroy nota" do
+    assert_difference('Nota.count', -1) do
+      delete nota_url(@nota)
     end
 
     assert_redirected_to nota_url

@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class NotaTest < ApplicationSystemTestCase
   setup do
-    @notum = nota(:one)
+    @nota = nota(:one)
   end
 
   test "visiting the index" do
@@ -10,40 +10,40 @@ class NotaTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Nota"
   end
 
-  test "creating a Notum" do
+  test "creating a Nota" do
     visit nota_url
-    click_on "New Notum"
+    click_on "New Nota"
 
-    fill_in "Alumnos", with: @notum.alumnos_id
-    fill_in "Examenes", with: @notum.examenes_id
-    fill_in "Foto", with: @notum.foto
-    fill_in "Nota", with: @notum.nota
-    click_on "Create Notum"
+    fill_in "Alumnos", with: @nota.alumnos_id
+    fill_in "Examenes", with: @nota.examenes_id
+    fill_in "Foto", with: @nota.foto
+    fill_in "Nota", with: @nota.nota
+    click_on "Create Nota"
 
-    assert_text "Notum was successfully created"
+    assert_text "Nota was successfully created"
     click_on "Back"
   end
 
-  test "updating a Notum" do
+  test "updating a Nota" do
     visit nota_url
     click_on "Edit", match: :first
 
-    fill_in "Alumnos", with: @notum.alumnos_id
-    fill_in "Examenes", with: @notum.examenes_id
-    fill_in "Foto", with: @notum.foto
-    fill_in "Nota", with: @notum.nota
-    click_on "Update Notum"
+    fill_in "Alumnos", with: @nota.alumnos_id
+    fill_in "Examenes", with: @nota.examenes_id
+    fill_in "Foto", with: @nota.foto
+    fill_in "Nota", with: @nota.nota
+    click_on "Update Nota"
 
-    assert_text "Notum was successfully updated"
+    assert_text "Nota was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Notum" do
+  test "destroying a Nota" do
     visit nota_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Notum was successfully destroyed"
+    assert_text "Nota was successfully destroyed"
   end
 end
