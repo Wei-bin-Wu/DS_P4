@@ -22,7 +22,7 @@
         <td><%= profesore.email %></td>
         <td><%= link_to 'Show', profesore %></td>
         <td><%= link_to 'Edit', edit_profesore_path(profesore) %></td>
-        <td><%= link_to 'Descargas', asset_path('/app/assets/apks/flutter.apk') %></td>
+        <td><%= link_to 'Descargas', asset_path('apks/flutter.apk') %></td>
         <td><%= link_to 'Destroy', profesore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
