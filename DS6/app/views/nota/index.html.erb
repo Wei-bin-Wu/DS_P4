@@ -19,7 +19,7 @@
         <td><%= notum.alumnos_id %></td>
         <td><%= notum.examenes_id %></td>
         <td><%= notum.nota %></td>
-        <td><%= notum.foto %></td>
+        <td><%= link_to 'Descargar Foto', asset_path(notum.foto) %></td>
         <td><%= link_to 'Show', notum %></td>
         <td><%= link_to 'Edit', edit_notum_path(notum) %></td>
         <td><%= link_to 'Destroy', notum, method: :delete, data: { confirm: 'Are you sure?' } %></td>

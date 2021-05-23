@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   root to: 'profesores#index'
 
   get "/app/assets/apks/flutter.apk" => "descarga#descargar"
+  get "/app/assets/images/:name" => "nota#descargar"
+  
 end
