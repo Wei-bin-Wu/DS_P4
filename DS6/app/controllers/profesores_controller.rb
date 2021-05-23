@@ -3,7 +3,8 @@ class ProfesoresController < ApplicationController
 
   # GET /profesores or /profesores.json
   def index
-    @profesores = Profesore.nombre + Profesore.apellido + Profesore.num_tlf + Profesore.email
+    @profesores = Profesore.all
+    @profesores.delete_at(:pass);
   end
 
   # GET /profesores/1 or /profesores/1.json
