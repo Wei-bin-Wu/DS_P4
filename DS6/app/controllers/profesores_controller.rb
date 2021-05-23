@@ -10,9 +10,6 @@ class ProfesoresController < ApplicationController
   def show
   end
 
-  def descargar
-    send_file("#{Rails.root}/app/assets/apks/flutter.apk")
-  end
   # GET /profesores/new
   def new
     @profesore = Profesore.new
