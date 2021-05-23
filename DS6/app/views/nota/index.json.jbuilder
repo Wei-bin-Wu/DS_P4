@@ -1,1 +1,1 @@
-json.array! @nota, partial: "nota/nota", as: :nota
+json.array! @nota, partial: "nota/notum", as: :notum

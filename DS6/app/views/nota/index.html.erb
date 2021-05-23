@@ -14,16 +14,15 @@
   </thead>
 
   <tbody>
-    <% @nota.each do |nota| %>
+    <% @nota.each do |notum| %>
       <tr>
-        <td><%= nota.alumnos_id %></td>
-        <td><%= nota.examenes_id %></td>
-        <td><%= nota.nota %></td>
-        <td><%= link_to 'Descargar', nota, method: :descargar%></td>
-        <td><%= nota.foto %></td>
-        <td><%= link_to 'Show', nota %></td>
-        <td><%= link_to 'Edit', edit_nota_path(nota) %></td>
-        <td><%= link_to 'Destroy', nota, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= notum.alumnos_id %></td>
+        <td><%= notum.examenes_id %></td>
+        <td><%= notum.nota %></td>
+        <td><%= notum.foto %></td>
+        <td><%= link_to 'Show', notum %></td>
+        <td><%= link_to 'Edit', edit_notum_path(notum) %></td>
+        <td><%= link_to 'Destroy', notum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Nota', new_nota_path %>
+<%= link_to 'New Notum', new_notum_path %>

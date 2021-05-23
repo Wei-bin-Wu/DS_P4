@@ -1,9 +1,9 @@
 class NotaController < ApplicationController
-  before_action :set_nota, only: %i[ show edit update destroy ]
+  before_action :set_notum, only: %i[ show edit update destroy ]
 
   # GET /nota or /nota.json
   def index
-    @nota = Nota.all
+    @nota = Notum.all
   end
 
   # GET /nota/1 or /nota/1.json
@@ -12,7 +12,7 @@ class NotaController < ApplicationController
 
   # GET /nota/new
   def new
-    @nota = Nota.new
+    @notum = Notum.new
   end
 
   # GET /nota/1/edit
@@ -21,15 +21,15 @@ class NotaController < ApplicationController
 
   # POST /nota or /nota.json
   def create
-    @nota = Nota.new(nota_params)
+    @notum = Notum.new(notum_params)
 
     respond_to do |format|
-      if @nota.save
-        format.html { redirect_to @nota, notice: "Nota was successfully created." }
-        format.json { render :show, status: :created, location: @nota }
+      if @notum.save
+        format.html { redirect_to @notum, notice: "Notum was successfully created." }
+        format.json { render :show, status: :created, location: @notum }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @nota.errors, status: :unprocessable_entity }
+        format.json { render json: @notum.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,37 +37,33 @@ class NotaController < ApplicationController
   # PATCH/PUT /nota/1 or /nota/1.json
   def update
     respond_to do |format|
-      if @nota.update(nota_params)
-        format.html { redirect_to @nota, notice: "Nota was successfully updated." }
-        format.json { render :show, status: :ok, location: @nota }
+      if @notum.update(notum_params)
+        format.html { redirect_to @notum, notice: "Notum was successfully updated." }
+        format.json { render :show, status: :ok, location: @notum }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @nota.errors, status: :unprocessable_entity }
+        format.json { render json: @notum.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /nota/1 or /nota/1.json
   def destroy
-    @nota.destroy
+    @notum.destroy
     respond_to do |format|
-      format.html { redirect_to nota_url, notice: "Nota was successfully destroyed." }
+      format.html { redirect_to nota_url, notice: "Notum was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  def descargar
-    send_file("#{Rails.root}/public/apks/flutter.apk")
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_nota
-      @nota = Nota.find(params[:id])
+    def set_notum
+      @notum = Notum.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def nota_params
-      params.require(:nota).permit(:alumnos_id, :examenes_id, :nota, :foto)
+    def notum_params
+      params.require(:notum).permit(:alumnos_id, :examenes_id, :nota, :foto)
     end
 end

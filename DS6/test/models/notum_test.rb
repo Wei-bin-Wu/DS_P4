@@ -1,6 +1,6 @@
 require "test_helper"
 
-class NotaTest < ActiveSupport::TestCase
+class NotumTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
