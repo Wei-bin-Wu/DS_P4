@@ -3,7 +3,7 @@ class ProfesoresController < ApplicationController
 
   # GET /profesores or /profesores.json
   def index
-    @profesores = Profesore.all
+    @profesores = Profesore.nombre + Profesore.apellido + Profesore.num_tlf + Profesore.email
   end
 
   # GET /profesores/1 or /profesores/1.json
@@ -64,6 +64,6 @@ class ProfesoresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profesore_params
-      params.require(:profesore).permit(:nombre, :apellido, :num_tlf, :email)
+      params.require(:profesore).permit(:nombre, :apellido, :num_tlf, :email, :pass)
     end
 end
