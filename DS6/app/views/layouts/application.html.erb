@@ -13,12 +13,12 @@
   <body>
   <div class="menu">
     <div class="menu"><%= link_to "Profesores", root_path %></div>
-    <div class="menu"><%= link_to "Alumnos", :alumnos %></div>
-    <div class="menu"><%= link_to "Administrador", :administradors %></div>
-    <div class="menu"><%= link_to "Asignaturas", :asignaturas %></div>
-    <div class="menu"><%= link_to "Matriculas", :matriculas %></div>
-    <div class="menu"><%= link_to "Examenes", :examenes %></div>
-    <div class="menu"><%= link_to "Nota", :nota %></div>
+    <div class="menu"><%= link_to "Alumnos", :students %></div>
+    <div class="menu"><%= link_to "Administrador", :administrators %></div>
+    <div class="menu"><%= link_to "Asignaturas", :subjects %></div>
+    <div class="menu"><%= link_to "Matriculas", :enrollments %></div>
+    <div class="menu"><%= link_to "Examenes", :exams %></div>
+    <div class="menu"><%= link_to "Nota", :notes %></div>
 
     <%= link_to 'Descargar App', asset_path('/app/assets/apks/flutter.apk') %>
     <%= yield %>
