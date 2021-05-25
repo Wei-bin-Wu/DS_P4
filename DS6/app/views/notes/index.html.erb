@@ -16,10 +16,10 @@
   <tbody>
     <% @notes.each do |note| %>
       <tr>
-        <td><%= note.student_id %></td>
-        <td><%= note.exam_id %></td>
+        <td><%= note.student.name + " " + note.student.surname %></td>
+        <td><%= note.exam.name %></td>
         <td><%= note.note %></td>
-        <td><%= note.photo %></td>
+        <td><%= link_to 'Descargar foto', asset_path(note.photo)  %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>

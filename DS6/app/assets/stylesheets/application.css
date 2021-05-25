@@ -111,6 +111,25 @@ thead td {
     background-color: #4CAF50;
     color: white;
 }
+header{
+    width: 90%;
+    margin-top: 4vh;
+}
+#cuerpo{
+    clear:both;
+    width: 94%;
+    height: auto;
+    border-style: dotted;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+.menu{
+    float:left;
+}
+.descarga{
+    float:right;
+}
 
 
 a {

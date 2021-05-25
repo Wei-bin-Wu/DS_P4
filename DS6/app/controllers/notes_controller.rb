@@ -18,6 +18,10 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
   end
+  
+  def descargar
+    send_file(request.original_url[25..-1])
+  end
 
   # POST /notes or /notes.json
   def create

@@ -11,16 +11,19 @@
   </head>
 
   <body>
-  <div class="menu">
-    <div class="menu"><%= link_to "Profesores", root_path %></div>
-    <div class="menu"><%= link_to "Alumnos", :students %></div>
-    <div class="menu"><%= link_to "Administrador", :administrators %></div>
-    <div class="menu"><%= link_to "Asignaturas", :subjects %></div>
-    <div class="menu"><%= link_to "Matriculas", :enrollments %></div>
-    <div class="menu"><%= link_to "Examenes", :exams %></div>
-    <div class="menu"><%= link_to "Nota", :notes %></div>
+    <header>
+      <div class="menu"><%= link_to "Profesores", root_path %></div>
+      <div class="menu"><%= link_to "Alumnos", :students %></div>
+      <div class="menu"><%= link_to "Administrador", :administrators %></div>
+      <div class="menu"><%= link_to "Asignaturas", :subjects %></div>
+      <div class="menu"><%= link_to "Matriculas", :enrollments %></div>
+      <div class="menu"><%= link_to "Examenes", :exams %></div>
+      <div class="menu"><%= link_to "Nota", :notes %></div>
 
-    <%= link_to 'Descargar App', asset_path('/app/assets/apks/flutter.apk') %>
-    <%= yield %>
+      <div class="descarga"><%= link_to 'Descargar App', asset_path('/app/assets/apks/flutter.apk') %></div>
+    </header>
+    <div id="cuerpo">
+      <%= yield %>
+    </div>
   </body>
 </html>
