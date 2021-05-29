@@ -7,10 +7,17 @@ class AdministratorsController < ApplicationController
   # GET /administrators or /administrators.json
   def index
     @administrators = Administrator.all
+    render json: @administrators, status: :ok
   end
 
   # GET /administrators/1 or /administrators/1.json
   def show
+    @administrators = Administrator.find_by(id: params[:id])
+    if (@administrators!=nil)
+      render json: @administrators, status: :ok
+    else  
+      render json: :nothing, status: :not_found
+    end
   end
 
   # GET /administrators/new
