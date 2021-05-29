@@ -1,7 +1,6 @@
 class AdministratorsController < ApplicationController
   before_action :set_administrator, only: %i[ show edit update destroy ]
-
-  http_basic_authenticate_with name: "administrador", password: "administrador", except: [:index, :show]
+  skip_before_action :verify_authenticity_token
 
   # GET /administrators or /administrators.json
   def index
