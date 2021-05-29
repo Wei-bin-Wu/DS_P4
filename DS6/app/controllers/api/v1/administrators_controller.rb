@@ -2,7 +2,6 @@ module Api
   module V1
 class AdministratorsController < ApplicationController
   before_action :set_administrator, only: %i[ show edit update destroy ]
-  skip_before_action :verify_authenticity_token
 
   # GET /administrators or /administrators.json
   def index
