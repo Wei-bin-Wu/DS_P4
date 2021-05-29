@@ -1,6 +1,8 @@
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[ show edit update destroy ]
 
+  http_basic_authenticate_with name: "administrador", password: "administrador", except: [:index, :show]
+
   # GET /professors or /professors.json
   def index
     @professors = Professor.all

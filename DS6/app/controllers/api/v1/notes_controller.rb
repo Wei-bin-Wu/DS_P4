@@ -5,6 +5,7 @@ class NotesController < ApplicationController
   # GET /notes or /notes.json
   def index
     @notes = Note.all
+    format.json { render json: @notes, status: :unprocessable_entity }
   end
 
   # GET /notes/1 or /notes/1.json
