@@ -71,3 +71,4 @@ class ExamsController < ApplicationController
     end
 end
 end
+end
