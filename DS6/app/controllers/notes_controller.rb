@@ -20,7 +20,7 @@ class NotesController < ApplicationController
   end
   
   def descargar
-    send_file("/app/assets/images/"+params[:route])
+    send_file(request.original_url[25..-1])
   end
 
   # POST /notes or /notes.json
