@@ -10,6 +10,12 @@ class NotesController < ApplicationController
 
   # GET /notes/1 or /notes/1.json
   def show
+    @notes = Note.find_by(id: params[:id])
+    if (@notes!=nil)
+      render json: @notes, status: :ok
+    else  
+      render json: :nothing, status: :not_found
+    end
   end
 
   # GET /notes/new
@@ -22,43 +28,38 @@ class NotesController < ApplicationController
   end
   
   def descargar
-    send_file("app/assets/images/"+params[:route])
+    send_file("app/assets/images/"+params[:id])
   end
 
   # POST /notes or /notes.json
   def create
     @note = Note.new(note_params)
 
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note, notice: "Note was successfully created." }
-        format.json { render :show, status: :created, location: @note }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    if @note.save
+      render json: @note, status: :created
+    else
+      render json: @note.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /notes/1 or /notes/1.json
   def update
-    respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: "Note was successfully updated." }
-        format.json { render :show, status: :ok, location: @note }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    @note = Note.find(params[:id])
+
+    if @note.update(note_params)
+      render json: @note, status: :created
+    else
+      render json: @note.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
-    @note.destroy
-    respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
-      format.json { head :no_content }
+    @notes = Note.find_by(id: params[:id])
+    if @notes.destroy
+      render json: :nothing, status: :ok
+    else
+      render json: :nothing, status: :unprocessable_entity
     end
   end
 
