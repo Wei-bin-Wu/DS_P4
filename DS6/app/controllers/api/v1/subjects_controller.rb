@@ -1,3 +1,5 @@
+module Api
+  module V1
 class SubjectsController < ApplicationController
   before_action :set_subject, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
@@ -66,4 +68,6 @@ class SubjectsController < ApplicationController
     def subject_params
       params.require(:subject).permit(:name, :professor_id)
     end
+end
+end
 end

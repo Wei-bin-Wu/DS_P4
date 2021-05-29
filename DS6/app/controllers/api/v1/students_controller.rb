@@ -1,3 +1,5 @@
+module Api
+  module V1
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
@@ -67,4 +69,6 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:name, :surname, :phone, :email, :pass, :address)
     end
+end
+end
 end

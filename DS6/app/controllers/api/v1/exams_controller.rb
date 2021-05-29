@@ -1,3 +1,5 @@
+module Api
+  module V1
 class ExamsController < ApplicationController
   before_action :set_exam, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
@@ -67,4 +69,5 @@ class ExamsController < ApplicationController
     def exam_params
       params.require(:exam).permit(:name, :date, :subject_id)
     end
+end
 end

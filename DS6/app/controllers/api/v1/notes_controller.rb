@@ -1,11 +1,12 @@
+module Api
+  module V1
 class NotesController < ApplicationController
   before_action :set_note, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.all
-    format.json { render json: @notes, status: :unprocessable_entity }
+    render json: Note.all, status: :ok
   end
 
   # GET /notes/1 or /notes/1.json
@@ -72,4 +73,6 @@ class NotesController < ApplicationController
     def note_params
       params.require(:note).permit(:student_id, :exam_id, :note, :photo)
     end
+end
+end
 end

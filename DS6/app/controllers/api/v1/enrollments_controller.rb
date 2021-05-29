@@ -1,3 +1,5 @@
+module Api
+  module V1
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
@@ -67,4 +69,6 @@ class EnrollmentsController < ApplicationController
     def enrollment_params
       params.require(:enrollment).permit(:subject_id, :student_id)
     end
+end
+end
 end

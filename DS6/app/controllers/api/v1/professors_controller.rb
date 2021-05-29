@@ -1,3 +1,5 @@
+module Api
+  module V1
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
@@ -67,4 +69,6 @@ class ProfessorsController < ApplicationController
     def professor_params
       params.require(:professor).permit(:name, :surname, :phone, :email, :pass)
     end
+end
+end
 end

@@ -1,3 +1,5 @@
+module Api
+  module V1
 class AdministratorsController < ApplicationController
   before_action :set_administrator, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
@@ -67,4 +69,6 @@ class AdministratorsController < ApplicationController
     def administrator_params
       params.require(:administrator).permit(:name, :surname, :phone, :email, :pass)
     end
+end
+end
 end
