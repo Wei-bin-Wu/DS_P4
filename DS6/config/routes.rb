@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :administrators
       resources :students
       resources :professors
-      get "/api/v1/notes/*id/descargar" => "notes#descargar"
+      get "/api/v1/notes/*dir/*name/descargar" => "notes#descargar"
     end
   end
 end

@@ -28,7 +28,7 @@ class NotesController < ApplicationController
   end
   
   def descargar
-    send_file("app/assets/images/"+params[:id])
+    send_file("app/assets/images/"+params[:dir]+"/"+params[:name])
   end
 
   # POST /notes or /notes.json
