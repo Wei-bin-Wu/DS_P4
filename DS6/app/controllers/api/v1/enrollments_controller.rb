@@ -5,11 +5,17 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments or /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    render json: Enrollment.all, status: :ok
   end
 
   # GET /enrollments/1 or /enrollments/1.json
   def show
+    @enrollments = Enrollment.find_by(id: params[:id])
+    if (@enrollments!=nil)
+      render json: @enrollments, status: :ok
+    else  
+      render json: :nothing, status: :not_found
+    end
   end
 
   # GET /enrollments/new
@@ -25,36 +31,31 @@ class EnrollmentsController < ApplicationController
   def create
     @enrollment = Enrollment.new(enrollment_params)
 
-    respond_to do |format|
-      if @enrollment.save
-        format.html { redirect_to @enrollment, notice: "Enrollment was successfully created." }
-        format.json { render :show, status: :created, location: @enrollment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-      end
+    if @enrollment.save
+      render json: @enrollment, status: :created
+    else
+      render json: @enrollment.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /enrollments/1 or /enrollments/1.json
   def update
-    respond_to do |format|
-      if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: "Enrollment was successfully updated." }
-        format.json { render :show, status: :ok, location: @enrollment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-      end
+    @enrollment = Enrollment.find(params[:id])
+
+    if @enrollment.update(enrollment_params)
+      render json: @enrollment, status: :created
+    else
+      render json: @enrollment.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /enrollments/1 or /enrollments/1.json
   def destroy
-    @enrollment.destroy
-    respond_to do |format|
-      format.html { redirect_to enrollments_url, notice: "Enrollment was successfully destroyed." }
-      format.json { head :no_content }
+    @enrollment = Enrollment.find_by(id: params[:id])
+    if @enrollment.destroy
+      render json: :nothing, status: :ok
+    else
+      render json: :nothing, status: :unprocessable_entity
     end
   end
 

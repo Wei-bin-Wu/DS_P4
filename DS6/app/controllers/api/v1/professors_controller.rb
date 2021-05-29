@@ -5,11 +5,17 @@ class ProfessorsController < ApplicationController
 
   # GET /professors or /professors.json
   def index
-    @professors = Professor.all
+    render json: Professor.all, status: :ok
   end
 
   # GET /professors/1 or /professors/1.json
   def show
+    @professor = Professor.find_by(id: params[:id])
+    if (@professor!=nil)
+      render json: @notes, status: :ok
+    else  
+      render json: :nothing, status: :not_found
+    end
   end
 
   # GET /professors/new
@@ -25,36 +31,31 @@ class ProfessorsController < ApplicationController
   def create
     @professor = Professor.new(professor_params)
 
-    respond_to do |format|
-      if @professor.save
-        format.html { redirect_to @professor, notice: "Professor was successfully created." }
-        format.json { render :show, status: :created, location: @professor }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @professor.errors, status: :unprocessable_entity }
-      end
+    if @professor.save
+      render json: @professor, status: :created
+    else
+      render json: @professor.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /professors/1 or /professors/1.json
   def update
-    respond_to do |format|
-      if @professor.update(professor_params)
-        format.html { redirect_to @professor, notice: "Professor was successfully updated." }
-        format.json { render :show, status: :ok, location: @professor }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @professor.errors, status: :unprocessable_entity }
-      end
+    @professor = Professor.find(params[:id])
+
+    if @professor.update(professor_params)
+      render json: @professor, status: :created
+    else
+      render json: @professor.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /professors/1 or /professors/1.json
   def destroy
-    @professor.destroy
-    respond_to do |format|
-      format.html { redirect_to professors_url, notice: "Professor was successfully destroyed." }
-      format.json { head :no_content }
+    @professor = Professor.find_by(id: params[:id])
+    if @professor.destroy
+      render json: :nothing, status: :ok
+    else
+      render json: :nothing, status: :unprocessable_entity
     end
   end
 

@@ -5,11 +5,17 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    render json: Student.all, status: :ok
   end
 
   # GET /students/1 or /students/1.json
   def show
+    @student = Student.find_by(id: params[:id])
+    if (@student!=nil)
+      render json: @student, status: :ok
+    else  
+      render json: :nothing, status: :not_found
+    end
   end
 
   # GET /students/new
@@ -25,36 +31,31 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
 
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: "Student was successfully created." }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+    if @student.save
+      render json: @note, status: :created
+    else
+      render json: @note.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /students/1 or /students/1.json
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: "Student was successfully updated." }
-        format.json { render :show, status: :ok, location: @student }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+    @student = Student.find(params[:id])
+
+    if @student.update(student_params)
+      render json: @student, status: :created
+    else
+      render json: @student.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /students/1 or /students/1.json
   def destroy
-    @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url, notice: "Student was successfully destroyed." }
-      format.json { head :no_content }
+    @student = Student.find_by(id: params[:id])
+    if @notes.destroy
+      render json: :nothing, status: :ok
+    else
+      render json: :nothing, status: :unprocessable_entity
     end
   end
 

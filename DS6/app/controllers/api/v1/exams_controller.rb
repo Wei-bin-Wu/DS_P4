@@ -5,11 +5,17 @@ class ExamsController < ApplicationController
 
   # GET /exams or /exams.json
   def index
-    @exams = Exam.all
+    render json: Exam.all, status: :ok
   end
 
   # GET /exams/1 or /exams/1.json
   def show
+    @exam = Exam.find_by(id: params[:id])
+    if (@exam!=nil)
+      render json: @exam, status: :ok
+    else  
+      render json: :nothing, status: :not_found
+    end
   end
 
   # GET /exams/new
@@ -25,36 +31,31 @@ class ExamsController < ApplicationController
   def create
     @exam = Exam.new(exam_params)
 
-    respond_to do |format|
-      if @exam.save
-        format.html { redirect_to @exam, notice: "Exam was successfully created." }
-        format.json { render :show, status: :created, location: @exam }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @exam.errors, status: :unprocessable_entity }
-      end
+    if @exam.save
+      render json: @exam, status: :created
+    else
+      render json: @exam.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /exams/1 or /exams/1.json
   def update
-    respond_to do |format|
-      if @exam.update(exam_params)
-        format.html { redirect_to @exam, notice: "Exam was successfully updated." }
-        format.json { render :show, status: :ok, location: @exam }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @exam.errors, status: :unprocessable_entity }
-      end
+    @exam = Exam.find(params[:id])
+
+    if @exam.update(exam_params)
+      render json: @exam, status: :created
+    else
+      render json: @exam.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /exams/1 or /exams/1.json
   def destroy
-    @exam.destroy
-    respond_to do |format|
-      format.html { redirect_to exams_url, notice: "Exam was successfully destroyed." }
-      format.json { head :no_content }
+    @exam = Exam.find_by(id: params[:id])
+    if @exam.destroy
+      render json: :nothing, status: :ok
+    else
+      render json: :nothing, status: :unprocessable_entity
     end
   end
 

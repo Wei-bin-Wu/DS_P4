@@ -31,37 +31,31 @@ class AdministratorsController < ApplicationController
   # POST /administrators or /administrators.json
   def create
     @administrator = Administrator.new(administrator_params)
-
-    respond_to do |format|
       if @administrator.save
-        format.html { redirect_to @administrator, notice: "Administrator was successfully created." }
-        format.json { render :show, status: :created, location: @administrator }
+        render json: @administrator, status: :created
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @administrator.errors, status: :unprocessable_entity }
+        render json: @administrator.errors, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /administrators/1 or /administrators/1.json
   def update
-    respond_to do |format|
-      if @administrator.update(administrator_params)
-        format.html { redirect_to @administrator, notice: "Administrator was successfully updated." }
-        format.json { render :show, status: :ok, location: @administrator }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @administrator.errors, status: :unprocessable_entity }
-      end
+    @administrator = Administrator.find(params[:id])
+
+    if @administrator.update(administrator_params)
+      render json: @administrator, status: :created
+    else
+      render json: @administrator.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /administrators/1 or /administrators/1.json
   def destroy
-    @administrator.destroy
-    respond_to do |format|
-      format.html { redirect_to administrators_url, notice: "Administrator was successfully destroyed." }
-      format.json { head :no_content }
+    @administrator = Administrator.find_by(id: params[:id])
+    if @administrator.destroy
+      render json: :nothing, status: :ok
+    else
+      render json: :nothing, status: :unprocessable_entity
     end
   end
 
