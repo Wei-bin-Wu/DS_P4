@@ -1,7 +1,6 @@
 module Api
   module V1
 class ProfessorsController < ApplicationController
-  before_action :set_professor, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
 
   # GET /professors or /professors.json

@@ -1,7 +1,6 @@
 module Api
   module V1
 class ExamsController < ApplicationController
-  before_action :set_exam, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
 
   # GET /exams or /exams.json

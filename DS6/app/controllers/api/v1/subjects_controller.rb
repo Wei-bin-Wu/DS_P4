@@ -1,7 +1,6 @@
 module Api
   module V1
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
   # GET /subjects or /subjects.json
   def index
