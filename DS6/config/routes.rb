@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   get "/app/assets/apks/flutter.apk" => "descarga#descargar"
   get "/app/assets/images/*route", to:"notes#descargar"
-
-  get "/api/v1/notes/*id/descargar" => "api::v1::notes#descargar"
   
   namespace :api, defaults: { format: 'json' }  do
     namespace :v1 do
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
       resources :administrators
       resources :students
       resources :professors
+      get "/api/v1/notes/*id/descargar" => "notes#descargar"
     end
   end
 end
