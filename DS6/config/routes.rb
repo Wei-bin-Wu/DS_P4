@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :administrators
       resources :students
       resources :professors
-      get "/api/v1/notes/images/*route" => "notes#descargar"
     end
   end
+  get "/api/v1/notes/images/*route" => "notes#descargar"
 end
