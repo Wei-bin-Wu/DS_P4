@@ -12,7 +12,7 @@ class ProfessorsController < ApplicationController
   def show
     @professor = Professor.find_by(id: params[:id])
     if (@professor!=nil)
-      render json: @notes, status: :ok
+      render json: @professor, status: :ok
     else  
       render json: :nothing, status: :not_found
     end
