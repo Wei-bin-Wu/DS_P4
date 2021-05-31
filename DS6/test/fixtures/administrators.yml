@@ -8,8 +8,8 @@ one:
   pass: MyString
 
 two:
-  name: MyString
-  surname: MyString
-  phone: MyString
-  email: MyString
-  pass: MyString
+  name: AAA
+  surname: AAA
+  phone: AAA
+  email: AAA
+  pass: AAA

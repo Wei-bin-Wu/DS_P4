@@ -9,9 +9,9 @@ one:
   address: MyString
 
 two:
-  name: MyString
-  surname: MyString
-  phone: MyString
-  email: MyString
-  pass: MyString
-  address: MyString
+  name: AAA
+  surname: AAA
+  phone: AAA
+  email: AAA
+  pass: AAA
+  address: AAA
