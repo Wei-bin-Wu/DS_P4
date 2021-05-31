@@ -27,11 +27,12 @@ class NotesController < ApplicationController
   def create
     uploaded_io = note_params[:photo]
     ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
+    rutaDescarga = "/app/assets/images/" + uploaded_io.original_filename
     File.open(ruta,'wb') do |file|
       file.write(uploaded_io.read)
     end
 
-    @note = Note.new({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:ruta})
+    @note = Note.new({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:rutaDescarga})
 
     respond_to do |format|
       if @note.save
@@ -48,12 +49,13 @@ class NotesController < ApplicationController
   def update
     uploaded_io = note_params[:photo]
     ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
+    rutaDescarga = "/app/assets/images/" + uploaded_io.original_filename
     File.open(ruta,'wb') do |file|
       file.write(uploaded_io.read)
     end
 
     respond_to do |format|
-      if @note.update({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:ruta})
+      if @note.update({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:rutaDescarga})
         format.html { redirect_to @note, notice: "Note was successfully updated." }
         format.json { render :show, status: :ok, location: @note }
       else
