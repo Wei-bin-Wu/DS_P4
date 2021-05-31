@@ -26,8 +26,8 @@ class NotesController < ApplicationController
   # POST /notes or /notes.json
   def create
     uploaded_io = note_params[:photo]
-    ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename), 'wb'
-    File.open(ruta,'w') do |file|
+    ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
+    File.open(ruta,'wb') do |file|
       file.write(uploaded_io.read)
     end
 
@@ -47,8 +47,8 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1 or /notes/1.json
   def update
     uploaded_io = note_params[:photo]
-    ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename), 'wb'
-    File.open(ruta,'w') do |file|
+    ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
+    File.open(ruta,'wb') do |file|
       file.write(uploaded_io.read)
     end
 
