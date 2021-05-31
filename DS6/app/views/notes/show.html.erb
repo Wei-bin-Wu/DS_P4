@@ -17,7 +17,7 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @note.photo %>
+  <%= link_to 'Descargar foto', asset_path(@note.photo)  %>
 </p>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
