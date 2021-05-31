@@ -4,7 +4,7 @@ one:
   student: one
   exam: one
   note: 1
-  photo: /photo1
+  photo: /app/assets/images/E1/E1_1.jpg
 
 two:
   student: two

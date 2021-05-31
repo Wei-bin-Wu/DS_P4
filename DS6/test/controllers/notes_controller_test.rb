@@ -5,6 +5,12 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     @note = notes(:one)
   end
 
+  test "debe descargar correctamente" do
+    get @note.photo
+    assert_response :success
+  end
+
+  # no puesto en diseño
   test "should get index" do
     get notes_url
     assert_response :success

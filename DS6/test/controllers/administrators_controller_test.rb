@@ -5,13 +5,20 @@ class AdministratorsControllerTest < ActionDispatch::IntegrationTest
     @administrator = administrators(:one)
   end
 
-  test "should get index" do
-    get administrators_url
+  test "nueva entrada sin credencial" do  
+    get new_administrator_url
     assert_response :success
   end
 
-  test "should get new" do
-    get new_administrator_url
+  test "nueva entrada con credencial" do  
+    get new_administrator_url, params:nil, headers: { Authorization: ActionController::HttpAuthentication::Basic.encode_credentials('admin', 'admin') }
+    assert_response :success
+  end
+
+
+  # no puesto en diseño
+  test "should get index" do
+    get administrators_url
     assert_response :success
   end
 

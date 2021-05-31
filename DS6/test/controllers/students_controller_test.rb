@@ -5,6 +5,12 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
     @student = students(:one)
   end
 
+  test "should get edit" do
+    get edit_student_url(@student), params:nil, headers: { Authorization: ActionController::HttpAuthentication::Basic.encode_credentials('admin', 'admin') }
+    assert_response :success
+  end
+
+  # no puesto en diseño
   test "should get index" do
     get students_url
     assert_response :success
@@ -25,11 +31,6 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should show student" do
     get student_url(@student)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_student_url(@student)
     assert_response :success
   end
 
