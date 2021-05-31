@@ -25,7 +25,7 @@ class NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
-    uploaded_io = params[:person][:picture]
+    uploaded_io = params[:picture]
     ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename), 'wb'
     File.open(ruta) do |file|
       file.write(uploaded_io.read)
@@ -46,12 +46,12 @@ class NotesController < ApplicationController
 
   # PATCH/PUT /notes/1 or /notes/1.json
   def update
-    uploaded_io = params[:person][:picture]
+    uploaded_io = params[:picture]
     ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename), 'wb'
     File.open(ruta) do |file|
       file.write(uploaded_io.read)
     end
-    
+
     respond_to do |format|
       if @note.update({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:ruta})
         format.html { redirect_to @note, notice: "Note was successfully updated." }
