@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  surname: MyString
-  phone: MyString
-  email: MyString
-  pass: MyString
-  address: MyString
+  name: stud1
+  surname: stud1
+  phone: phonest1
+  email: email@stud1.es
+  pass: stud1
+  address: stud1
 
 two:
-  name: AAA
-  surname: AAA
-  phone: AAA
-  email: AAA
-  pass: AAA
-  address: AAA
+  name: stud2
+  surname: stud2
+  phone: phonest2
+  email: email@stud2.es
+  pass: stud2
+  address: stud2

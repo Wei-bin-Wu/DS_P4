@@ -4,10 +4,10 @@ one:
   student: one
   exam: one
   note: 1
-  photo: MyString
+  photo: /photo1
 
 two:
   student: two
   exam: two
   note: 1
-  photo: MyString2
+  photo: /photo2
