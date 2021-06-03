@@ -25,14 +25,18 @@ class NotesController < ApplicationController
 
   # POST /notes or /notes.json
   def create
-    uploaded_io = note_params[:photo]
-    ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
-    rutaDescarga = "/app/assets/images/" + uploaded_io.original_filename
-    File.open(ruta,'wb') do |file|
-      file.write(uploaded_io.read)
-    end
+    if note_params[:photo] != nil
+      uploaded_io = note_params[:photo]
+      ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
+      rutaDescarga = "/app/assets/images/" + uploaded_io.original_filename
+      File.open(ruta,'wb') do |file|
+        file.write(uploaded_io.read)
+      end
 
-    @note = Note.new({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:rutaDescarga})
+      @note = Note.new({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  nota:note_params[:nota], photo:rutaDescarga})
+    else
+      @note = Note.new(note_params)
+    end
 
     respond_to do |format|
       if @note.save
@@ -47,15 +51,20 @@ class NotesController < ApplicationController
 
   # PATCH/PUT /notes/1 or /notes/1.json
   def update
-    uploaded_io = note_params[:photo]
-    ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
-    rutaDescarga = "/app/assets/images/" + uploaded_io.original_filename
-    File.open(ruta,'wb') do |file|
-      file.write(uploaded_io.read)
+    if note_params[:photo] != nil
+      uploaded_io = note_params[:photo]
+      ruta = Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename)
+      rutaDescarga = "/app/assets/images/" + uploaded_io.original_filename
+      File.open(ruta,'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+    else
+      rutaDescarga = @note.photo
     end
+    
 
     respond_to do |format|
-      if @note.update({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  note:note_params[:note], photo:rutaDescarga})
+      if @note.update({student_id:note_params[:student_id], exam_id:note_params[:exam_id],  nota:note_params[:nota], photo:rutaDescarga})
         format.html { redirect_to @note, notice: "Note was successfully updated." }
         format.json { render :show, status: :ok, location: @note }
       else
@@ -82,6 +91,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:student_id, :exam_id, :note, :photo)
+      params.require(:note).permit(:student_id, :exam_id, :nota, :photo)
     end
 end

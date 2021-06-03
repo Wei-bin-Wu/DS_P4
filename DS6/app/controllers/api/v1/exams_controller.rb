@@ -43,7 +43,7 @@ class ExamsController < ApplicationController
     @exam = Exam.find(params[:id])
 
     if @exam.update(exam_params)
-      render json: @exam, status: :created
+      render json: @exam, status: :ok
     else
       render json: @exam.errors, status: :unprocessable_entity
     end

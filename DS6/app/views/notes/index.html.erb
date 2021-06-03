@@ -18,8 +18,13 @@
       <tr>
         <td><%= note.student.name + " " + note.student.surname %></td>
         <td><%= note.exam.name %></td>
-        <td><%= note.note %></td>
-        <td><%= link_to 'Descargar foto', asset_path(note.photo)  %></td>
+        <td><%= note.nota %></td>
+        <% if note.photo == nil || note.photo === "" %>
+          <td>No hay foto</td>
+        <% else %>
+          <td><%= link_to 'Descargar foto', asset_path(note.photo)  %></td>
+        <% end %>
+        
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>

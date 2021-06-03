@@ -43,7 +43,7 @@ class AdministratorsController < ApplicationController
     @administrator = Administrator.find(params[:id])
 
     if @administrator.update(administrator_params)
-      render json: @administrator, status: :created
+      render json: @administrator, status: :ok
     else
       render json: @administrator.errors, status: :unprocessable_entity
     end

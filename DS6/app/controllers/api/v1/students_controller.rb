@@ -32,9 +32,9 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
-      render json: @note, status: :created
+      render json: @student, status: :created
     else
-      render json: @note.errors, status: :unprocessable_entity
+      render json: @student.errors, status: :unprocessable_entity
     end
   end
 
@@ -43,7 +43,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     if @student.update(student_params)
-      render json: @student, status: :created
+      render json: @student, status: :ok
     else
       render json: @student.errors, status: :unprocessable_entity
     end
@@ -52,7 +52,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1 or /students/1.json
   def destroy
     @student = Student.find_by(id: params[:id])
-    if @notes.destroy
+    if @student.destroy
       render json: :nothing, status: :ok
     else
       render json: :nothing, status: :unprocessable_entity

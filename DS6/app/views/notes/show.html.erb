@@ -12,12 +12,16 @@
 
 <p>
   <strong>Note:</strong>
-  <%= @note.note %>
+  <%= @note.nota %>
 </p>
 
 <p>
   <strong>Photo:</strong>
-  <%= link_to 'Descargar foto', asset_path(@note.photo)  %>
+  <% if @note.photo == nil || @note.photo === ""  %>
+    No hay foto
+  <% else %>
+    <%= link_to 'Descargar foto', asset_path(@note.photo)  %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |

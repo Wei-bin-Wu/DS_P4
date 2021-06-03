@@ -47,7 +47,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
 
     if @note.update(note_params)
-      render json: @note, status: :created
+      render json: @note, status: :ok
     else
       render json: @note.errors, status: :unprocessable_entity
     end
@@ -71,7 +71,7 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:student_id, :exam_id, :note, :photo)
+      params.require(:note).permit(:student_id, :exam_id, :nota, :photo)
     end
 end
 end

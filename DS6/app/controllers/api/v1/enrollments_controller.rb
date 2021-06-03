@@ -43,7 +43,7 @@ class EnrollmentsController < ApplicationController
     @enrollment = Enrollment.find(params[:id])
 
     if @enrollment.update(enrollment_params)
-      render json: @enrollment, status: :created
+      render json: @enrollment, status: :ok
     else
       render json: @enrollment.errors, status: :unprocessable_entity
     end

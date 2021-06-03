@@ -42,7 +42,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.find(params[:id])
 
     if @subject.update(subject_params)
-      render json: @subject, status: :created
+      render json: @subject, status: :ok
     else
       render json: @subject.errors, status: :unprocessable_entity
     end

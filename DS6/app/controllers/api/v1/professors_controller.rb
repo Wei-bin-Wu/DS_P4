@@ -43,7 +43,7 @@ class ProfessorsController < ApplicationController
     @professor = Professor.find(params[:id])
 
     if @professor.update(professor_params)
-      render json: @professor, status: :created
+      render json: @professor, status: :ok
     else
       render json: @professor.errors, status: :unprocessable_entity
     end
